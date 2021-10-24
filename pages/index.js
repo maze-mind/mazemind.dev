@@ -1,7 +1,15 @@
+import React, { useState } from 'react';
 import Head from 'next/head'
 import Image from 'next/image'
+import Scene from './Scene';
+
+import LoadingPage from './LoadingPage';
 
 export default function Home() {
+  const [Loading, toggleLoading] = useState(true);
+
+  const closeLoading = () => toggleLoading(false);
+
   return (
     <div>
       <Head>
@@ -11,7 +19,7 @@ export default function Home() {
       </Head>
 
       <main>
-        
+        {Loading ? <LoadingPage closeLoading={closeLoading}/> : <Scene />}
       </main>
 
     </div>
